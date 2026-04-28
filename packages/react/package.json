@@ -37,7 +37,8 @@
     "provenance": true
   },
   "scripts": {
-    "build": "yarn clean && node tasks/build-styles.js && node tasks/build.js",
+    "build": "node scripts/generate-exports.mjs && yarn clean && node tasks/build-styles.js && node tasks/build.js",
+    "generate-exports": "node scripts/generate-exports.mjs",
     "clean": "rimraf es lib icons/index.js icons/index.d.ts icons/index.esm.js storybook-static",
     "postinstall": "ibmtelemetry --config=telemetry.yml",
     "storybook": "storybook dev -p 3000",
@@ -124,5 +125,625 @@
     "index.scss",
     "**/*.scss",
     "**/*.css"
-  ]
+  ],
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
+    },
+    "./package.json": "./package.json",
+    "./feature-flags": {
+      "types": "./es/feature-flags.d.ts",
+      "import": "./es/feature-flags.js",
+      "require": "./lib/feature-flags.js"
+    },
+    "./icons": {
+      "types": "./icons/index.d.ts",
+      "import": "./icons/index.esm.js",
+      "require": "./icons/index.js"
+    },
+    "./Accordion": {
+      "types": "./es/components/Accordion/index.d.ts",
+      "import": "./es/components/Accordion/index.js",
+      "require": "./lib/components/Accordion/index.js"
+    },
+    "./AccordionItem": {
+      "types": "./es/components/AccordionItem/index.d.ts",
+      "import": "./es/components/AccordionItem/index.js",
+      "require": "./lib/components/AccordionItem/index.js"
+    },
+    "./AILabel": {
+      "types": "./es/components/AILabel/index.d.ts",
+      "import": "./es/components/AILabel/index.js",
+      "require": "./lib/components/AILabel/index.js"
+    },
+    "./AISkeleton": {
+      "types": "./es/components/AISkeleton/index.d.ts",
+      "import": "./es/components/AISkeleton/index.js",
+      "require": "./lib/components/AISkeleton/index.js"
+    },
+    "./AspectRatio": {
+      "types": "./es/components/AspectRatio/index.d.ts",
+      "import": "./es/components/AspectRatio/index.js",
+      "require": "./lib/components/AspectRatio/index.js"
+    },
+    "./Breadcrumb": {
+      "types": "./es/components/Breadcrumb/index.d.ts",
+      "import": "./es/components/Breadcrumb/index.js",
+      "require": "./lib/components/Breadcrumb/index.js"
+    },
+    "./Button": {
+      "types": "./es/components/Button/index.d.ts",
+      "import": "./es/components/Button/index.js",
+      "require": "./lib/components/Button/index.js"
+    },
+    "./ButtonSet": {
+      "types": "./es/components/ButtonSet/index.d.ts",
+      "import": "./es/components/ButtonSet/index.js",
+      "require": "./lib/components/ButtonSet/index.js"
+    },
+    "./ChatButton": {
+      "types": "./es/components/ChatButton/index.d.ts",
+      "import": "./es/components/ChatButton/index.js",
+      "require": "./lib/components/ChatButton/index.js"
+    },
+    "./Checkbox": {
+      "types": "./es/components/Checkbox/index.d.ts",
+      "import": "./es/components/Checkbox/index.js",
+      "require": "./lib/components/Checkbox/index.js"
+    },
+    "./CheckboxGroup": {
+      "types": "./es/components/CheckboxGroup/index.d.ts",
+      "import": "./es/components/CheckboxGroup/index.js",
+      "require": "./lib/components/CheckboxGroup/index.js"
+    },
+    "./ClassPrefix": {
+      "types": "./es/components/ClassPrefix/index.d.ts",
+      "import": "./es/components/ClassPrefix/index.js",
+      "require": "./lib/components/ClassPrefix/index.js"
+    },
+    "./CodeSnippet": {
+      "types": "./es/components/CodeSnippet/index.d.ts",
+      "import": "./es/components/CodeSnippet/index.js",
+      "require": "./lib/components/CodeSnippet/index.js"
+    },
+    "./ComboBox": {
+      "types": "./es/components/ComboBox/index.d.ts",
+      "import": "./es/components/ComboBox/index.js",
+      "require": "./lib/components/ComboBox/index.js"
+    },
+    "./ComboButton": {
+      "types": "./es/components/ComboButton/index.d.ts",
+      "import": "./es/components/ComboButton/index.js",
+      "require": "./lib/components/ComboButton/index.js"
+    },
+    "./ComposedModal": {
+      "types": "./es/components/ComposedModal/index.d.ts",
+      "import": "./es/components/ComposedModal/index.js",
+      "require": "./lib/components/ComposedModal/index.js"
+    },
+    "./ContainedList": {
+      "types": "./es/components/ContainedList/index.d.ts",
+      "import": "./es/components/ContainedList/index.js",
+      "require": "./lib/components/ContainedList/index.js"
+    },
+    "./ContentSwitcher": {
+      "types": "./es/components/ContentSwitcher/index.d.ts",
+      "import": "./es/components/ContentSwitcher/index.js",
+      "require": "./lib/components/ContentSwitcher/index.js"
+    },
+    "./ContextMenu": {
+      "types": "./es/components/ContextMenu/index.d.ts",
+      "import": "./es/components/ContextMenu/index.js",
+      "require": "./lib/components/ContextMenu/index.js"
+    },
+    "./Copy": {
+      "types": "./es/components/Copy/index.d.ts",
+      "import": "./es/components/Copy/index.js",
+      "require": "./lib/components/Copy/index.js"
+    },
+    "./CopyButton": {
+      "types": "./es/components/CopyButton/index.d.ts",
+      "import": "./es/components/CopyButton/index.js",
+      "require": "./lib/components/CopyButton/index.js"
+    },
+    "./DangerButton": {
+      "types": "./es/components/DangerButton/index.d.ts",
+      "import": "./es/components/DangerButton/index.js",
+      "require": "./lib/components/DangerButton/index.js"
+    },
+    "./DataTable": {
+      "types": "./es/components/DataTable/index.d.ts",
+      "import": "./es/components/DataTable/index.js",
+      "require": "./lib/components/DataTable/index.js"
+    },
+    "./DataTableSkeleton": {
+      "types": "./es/components/DataTableSkeleton/index.d.ts",
+      "import": "./es/components/DataTableSkeleton/index.js",
+      "require": "./lib/components/DataTableSkeleton/index.js"
+    },
+    "./DatePicker": {
+      "types": "./es/components/DatePicker/index.d.ts",
+      "import": "./es/components/DatePicker/index.js",
+      "require": "./lib/components/DatePicker/index.js"
+    },
+    "./DatePickerInput": {
+      "types": "./es/components/DatePickerInput/index.d.ts",
+      "import": "./es/components/DatePickerInput/index.js",
+      "require": "./lib/components/DatePickerInput/index.js"
+    },
+    "./Dialog": {
+      "types": "./es/components/Dialog/index.d.ts",
+      "import": "./es/components/Dialog/index.js",
+      "require": "./lib/components/Dialog/index.js"
+    },
+    "./Dropdown": {
+      "types": "./es/components/Dropdown/index.d.ts",
+      "import": "./es/components/Dropdown/index.js",
+      "require": "./lib/components/Dropdown/index.js"
+    },
+    "./ErrorBoundary": {
+      "types": "./es/components/ErrorBoundary/index.d.ts",
+      "import": "./es/components/ErrorBoundary/index.js",
+      "require": "./lib/components/ErrorBoundary/index.js"
+    },
+    "./ExpandableSearch": {
+      "types": "./es/components/ExpandableSearch/index.d.ts",
+      "import": "./es/components/ExpandableSearch/index.js",
+      "require": "./lib/components/ExpandableSearch/index.js"
+    },
+    "./FeatureFlags": {
+      "types": "./es/components/FeatureFlags/index.d.ts",
+      "import": "./es/components/FeatureFlags/index.js",
+      "require": "./lib/components/FeatureFlags/index.js"
+    },
+    "./FileUploader": {
+      "types": "./es/components/FileUploader/index.d.ts",
+      "import": "./es/components/FileUploader/index.js",
+      "require": "./lib/components/FileUploader/index.js"
+    },
+    "./FluidComboBox": {
+      "types": "./es/components/FluidComboBox/index.d.ts",
+      "import": "./es/components/FluidComboBox/index.js",
+      "require": "./lib/components/FluidComboBox/index.js"
+    },
+    "./FluidDatePicker": {
+      "types": "./es/components/FluidDatePicker/index.d.ts",
+      "import": "./es/components/FluidDatePicker/index.js",
+      "require": "./lib/components/FluidDatePicker/index.js"
+    },
+    "./FluidDatePickerInput": {
+      "types": "./es/components/FluidDatePickerInput/index.d.ts",
+      "import": "./es/components/FluidDatePickerInput/index.js",
+      "require": "./lib/components/FluidDatePickerInput/index.js"
+    },
+    "./FluidDropdown": {
+      "types": "./es/components/FluidDropdown/index.d.ts",
+      "import": "./es/components/FluidDropdown/index.js",
+      "require": "./lib/components/FluidDropdown/index.js"
+    },
+    "./FluidForm": {
+      "types": "./es/components/FluidForm/index.d.ts",
+      "import": "./es/components/FluidForm/index.js",
+      "require": "./lib/components/FluidForm/index.js"
+    },
+    "./FluidMultiSelect": {
+      "types": "./es/components/FluidMultiSelect/index.d.ts",
+      "import": "./es/components/FluidMultiSelect/index.js",
+      "require": "./lib/components/FluidMultiSelect/index.js"
+    },
+    "./FluidNumberInput": {
+      "types": "./es/components/FluidNumberInput/index.d.ts",
+      "import": "./es/components/FluidNumberInput/index.js",
+      "require": "./lib/components/FluidNumberInput/index.js"
+    },
+    "./FluidSearch": {
+      "types": "./es/components/FluidSearch/index.d.ts",
+      "import": "./es/components/FluidSearch/index.js",
+      "require": "./lib/components/FluidSearch/index.js"
+    },
+    "./FluidSelect": {
+      "types": "./es/components/FluidSelect/index.d.ts",
+      "import": "./es/components/FluidSelect/index.js",
+      "require": "./lib/components/FluidSelect/index.js"
+    },
+    "./FluidTextArea": {
+      "types": "./es/components/FluidTextArea/index.d.ts",
+      "import": "./es/components/FluidTextArea/index.js",
+      "require": "./lib/components/FluidTextArea/index.js"
+    },
+    "./FluidTextInput": {
+      "types": "./es/components/FluidTextInput/index.d.ts",
+      "import": "./es/components/FluidTextInput/index.js",
+      "require": "./lib/components/FluidTextInput/index.js"
+    },
+    "./FluidTimePicker": {
+      "types": "./es/components/FluidTimePicker/index.d.ts",
+      "import": "./es/components/FluidTimePicker/index.js",
+      "require": "./lib/components/FluidTimePicker/index.js"
+    },
+    "./FluidTimePickerSelect": {
+      "types": "./es/components/FluidTimePickerSelect/index.d.ts",
+      "import": "./es/components/FluidTimePickerSelect/index.js",
+      "require": "./lib/components/FluidTimePickerSelect/index.js"
+    },
+    "./Form": {
+      "types": "./es/components/Form/index.d.ts",
+      "import": "./es/components/Form/index.js",
+      "require": "./lib/components/Form/index.js"
+    },
+    "./FormGroup": {
+      "types": "./es/components/FormGroup/index.d.ts",
+      "import": "./es/components/FormGroup/index.js",
+      "require": "./lib/components/FormGroup/index.js"
+    },
+    "./FormItem": {
+      "types": "./es/components/FormItem/index.d.ts",
+      "import": "./es/components/FormItem/index.js",
+      "require": "./lib/components/FormItem/index.js"
+    },
+    "./FormLabel": {
+      "types": "./es/components/FormLabel/index.d.ts",
+      "import": "./es/components/FormLabel/index.js",
+      "require": "./lib/components/FormLabel/index.js"
+    },
+    "./Grid": {
+      "types": "./es/components/Grid/index.d.ts",
+      "import": "./es/components/Grid/index.js",
+      "require": "./lib/components/Grid/index.js"
+    },
+    "./Heading": {
+      "types": "./es/components/Heading/index.d.ts",
+      "import": "./es/components/Heading/index.js",
+      "require": "./lib/components/Heading/index.js"
+    },
+    "./Icon": {
+      "types": "./es/components/Icon/index.d.ts",
+      "import": "./es/components/Icon/index.js",
+      "require": "./lib/components/Icon/index.js"
+    },
+    "./IconButton": {
+      "types": "./es/components/IconButton/index.d.ts",
+      "import": "./es/components/IconButton/index.js",
+      "require": "./lib/components/IconButton/index.js"
+    },
+    "./IconIndicator": {
+      "types": "./es/components/IconIndicator/index.d.ts",
+      "import": "./es/components/IconIndicator/index.js",
+      "require": "./lib/components/IconIndicator/index.js"
+    },
+    "./IdPrefix": {
+      "types": "./es/components/IdPrefix/index.d.ts",
+      "import": "./es/components/IdPrefix/index.js",
+      "require": "./lib/components/IdPrefix/index.js"
+    },
+    "./InlineCheckbox": {
+      "types": "./es/components/InlineCheckbox/index.d.ts",
+      "import": "./es/components/InlineCheckbox/index.js",
+      "require": "./lib/components/InlineCheckbox/index.js"
+    },
+    "./InlineLoading": {
+      "types": "./es/components/InlineLoading/index.d.ts",
+      "import": "./es/components/InlineLoading/index.js",
+      "require": "./lib/components/InlineLoading/index.js"
+    },
+    "./Layer": {
+      "types": "./es/components/Layer/index.d.ts",
+      "import": "./es/components/Layer/index.js",
+      "require": "./lib/components/Layer/index.js"
+    },
+    "./Layout": {
+      "types": "./es/components/Layout/index.d.ts",
+      "import": "./es/components/Layout/index.js",
+      "require": "./lib/components/Layout/index.js"
+    },
+    "./LayoutDirection": {
+      "types": "./es/components/LayoutDirection/index.d.ts",
+      "import": "./es/components/LayoutDirection/index.js",
+      "require": "./lib/components/LayoutDirection/index.js"
+    },
+    "./Link": {
+      "types": "./es/components/Link/index.d.ts",
+      "import": "./es/components/Link/index.js",
+      "require": "./lib/components/Link/index.js"
+    },
+    "./ListBox": {
+      "types": "./es/components/ListBox/index.d.ts",
+      "import": "./es/components/ListBox/index.js",
+      "require": "./lib/components/ListBox/index.js"
+    },
+    "./ListItem": {
+      "types": "./es/components/ListItem/index.d.ts",
+      "import": "./es/components/ListItem/index.js",
+      "require": "./lib/components/ListItem/index.js"
+    },
+    "./Loading": {
+      "types": "./es/components/Loading/index.d.ts",
+      "import": "./es/components/Loading/index.js",
+      "require": "./lib/components/Loading/index.js"
+    },
+    "./Menu": {
+      "types": "./es/components/Menu/index.d.ts",
+      "import": "./es/components/Menu/index.js",
+      "require": "./lib/components/Menu/index.js"
+    },
+    "./MenuButton": {
+      "types": "./es/components/MenuButton/index.d.ts",
+      "import": "./es/components/MenuButton/index.js",
+      "require": "./lib/components/MenuButton/index.js"
+    },
+    "./Modal": {
+      "types": "./es/components/Modal/index.d.ts",
+      "import": "./es/components/Modal/index.js",
+      "require": "./lib/components/Modal/index.js"
+    },
+    "./ModalWrapper": {
+      "types": "./es/components/ModalWrapper/index.d.ts",
+      "import": "./es/components/ModalWrapper/index.js",
+      "require": "./lib/components/ModalWrapper/index.js"
+    },
+    "./MultiSelect": {
+      "types": "./es/components/MultiSelect/index.d.ts",
+      "import": "./es/components/MultiSelect/index.js",
+      "require": "./lib/components/MultiSelect/index.js"
+    },
+    "./Notification": {
+      "types": "./es/components/Notification/index.d.ts",
+      "import": "./es/components/Notification/index.js",
+      "require": "./lib/components/Notification/index.js"
+    },
+    "./NumberInput": {
+      "types": "./es/components/NumberInput/index.d.ts",
+      "import": "./es/components/NumberInput/index.js",
+      "require": "./lib/components/NumberInput/index.js"
+    },
+    "./OrderedList": {
+      "types": "./es/components/OrderedList/index.d.ts",
+      "import": "./es/components/OrderedList/index.js",
+      "require": "./lib/components/OrderedList/index.js"
+    },
+    "./OverflowMenu": {
+      "types": "./es/components/OverflowMenu/index.d.ts",
+      "import": "./es/components/OverflowMenu/index.js",
+      "require": "./lib/components/OverflowMenu/index.js"
+    },
+    "./OverflowMenuItem": {
+      "types": "./es/components/OverflowMenuItem/index.d.ts",
+      "import": "./es/components/OverflowMenuItem/index.js",
+      "require": "./lib/components/OverflowMenuItem/index.js"
+    },
+    "./OverflowMenuV2": {
+      "types": "./es/components/OverflowMenuV2/index.d.ts",
+      "import": "./es/components/OverflowMenuV2/index.js",
+      "require": "./lib/components/OverflowMenuV2/index.js"
+    },
+    "./PageHeader": {
+      "types": "./es/components/PageHeader/index.d.ts",
+      "import": "./es/components/PageHeader/index.js",
+      "require": "./lib/components/PageHeader/index.js"
+    },
+    "./Pagination": {
+      "types": "./es/components/Pagination/index.d.ts",
+      "import": "./es/components/Pagination/index.js",
+      "require": "./lib/components/Pagination/index.js"
+    },
+    "./PaginationNav": {
+      "types": "./es/components/PaginationNav/index.d.ts",
+      "import": "./es/components/PaginationNav/index.js",
+      "require": "./lib/components/PaginationNav/index.js"
+    },
+    "./PasswordInput": {
+      "types": "./es/components/PasswordInput/index.d.ts",
+      "import": "./es/components/PasswordInput/index.js",
+      "require": "./lib/components/PasswordInput/index.js"
+    },
+    "./Popover": {
+      "types": "./es/components/Popover/index.d.ts",
+      "import": "./es/components/Popover/index.js",
+      "require": "./lib/components/Popover/index.js"
+    },
+    "./Portal": {
+      "types": "./es/components/Portal/index.d.ts",
+      "import": "./es/components/Portal/index.js",
+      "require": "./lib/components/Portal/index.js"
+    },
+    "./PrimaryButton": {
+      "types": "./es/components/PrimaryButton/index.d.ts",
+      "import": "./es/components/PrimaryButton/index.js",
+      "require": "./lib/components/PrimaryButton/index.js"
+    },
+    "./ProgressBar": {
+      "types": "./es/components/ProgressBar/index.d.ts",
+      "import": "./es/components/ProgressBar/index.js",
+      "require": "./lib/components/ProgressBar/index.js"
+    },
+    "./ProgressIndicator": {
+      "types": "./es/components/ProgressIndicator/index.d.ts",
+      "import": "./es/components/ProgressIndicator/index.js",
+      "require": "./lib/components/ProgressIndicator/index.js"
+    },
+    "./RadioButton": {
+      "types": "./es/components/RadioButton/index.d.ts",
+      "import": "./es/components/RadioButton/index.js",
+      "require": "./lib/components/RadioButton/index.js"
+    },
+    "./RadioButtonGroup": {
+      "types": "./es/components/RadioButtonGroup/index.d.ts",
+      "import": "./es/components/RadioButtonGroup/index.js",
+      "require": "./lib/components/RadioButtonGroup/index.js"
+    },
+    "./RadioTile": {
+      "types": "./es/components/RadioTile/index.d.ts",
+      "import": "./es/components/RadioTile/index.js",
+      "require": "./lib/components/RadioTile/index.js"
+    },
+    "./Search": {
+      "types": "./es/components/Search/index.d.ts",
+      "import": "./es/components/Search/index.js",
+      "require": "./lib/components/Search/index.js"
+    },
+    "./SecondaryButton": {
+      "types": "./es/components/SecondaryButton/index.d.ts",
+      "import": "./es/components/SecondaryButton/index.js",
+      "require": "./lib/components/SecondaryButton/index.js"
+    },
+    "./Select": {
+      "types": "./es/components/Select/index.d.ts",
+      "import": "./es/components/Select/index.js",
+      "require": "./lib/components/Select/index.js"
+    },
+    "./SelectItem": {
+      "types": "./es/components/SelectItem/index.d.ts",
+      "import": "./es/components/SelectItem/index.js",
+      "require": "./lib/components/SelectItem/index.js"
+    },
+    "./SelectItemGroup": {
+      "types": "./es/components/SelectItemGroup/index.d.ts",
+      "import": "./es/components/SelectItemGroup/index.js",
+      "require": "./lib/components/SelectItemGroup/index.js"
+    },
+    "./ShapeIndicator": {
+      "types": "./es/components/ShapeIndicator/index.d.ts",
+      "import": "./es/components/ShapeIndicator/index.js",
+      "require": "./lib/components/ShapeIndicator/index.js"
+    },
+    "./SkeletonIcon": {
+      "types": "./es/components/SkeletonIcon/index.d.ts",
+      "import": "./es/components/SkeletonIcon/index.js",
+      "require": "./lib/components/SkeletonIcon/index.js"
+    },
+    "./SkeletonPlaceholder": {
+      "types": "./es/components/SkeletonPlaceholder/index.d.ts",
+      "import": "./es/components/SkeletonPlaceholder/index.js",
+      "require": "./lib/components/SkeletonPlaceholder/index.js"
+    },
+    "./SkeletonText": {
+      "types": "./es/components/SkeletonText/index.d.ts",
+      "import": "./es/components/SkeletonText/index.js",
+      "require": "./lib/components/SkeletonText/index.js"
+    },
+    "./Slider": {
+      "types": "./es/components/Slider/index.d.ts",
+      "import": "./es/components/Slider/index.js",
+      "require": "./lib/components/Slider/index.js"
+    },
+    "./Stack": {
+      "types": "./es/components/Stack/index.d.ts",
+      "import": "./es/components/Stack/index.js",
+      "require": "./lib/components/Stack/index.js"
+    },
+    "./StructuredList": {
+      "types": "./es/components/StructuredList/index.d.ts",
+      "import": "./es/components/StructuredList/index.js",
+      "require": "./lib/components/StructuredList/index.js"
+    },
+    "./Switch": {
+      "types": "./es/components/Switch/index.d.ts",
+      "import": "./es/components/Switch/index.js",
+      "require": "./lib/components/Switch/index.js"
+    },
+    "./Tab": {
+      "types": "./es/components/Tab/index.d.ts",
+      "import": "./es/components/Tab/index.js",
+      "require": "./lib/components/Tab/index.js"
+    },
+    "./TabContent": {
+      "types": "./es/components/TabContent/index.d.ts",
+      "import": "./es/components/TabContent/index.js",
+      "require": "./lib/components/TabContent/index.js"
+    },
+    "./Tabs": {
+      "types": "./es/components/Tabs/index.d.ts",
+      "import": "./es/components/Tabs/index.js",
+      "require": "./lib/components/Tabs/index.js"
+    },
+    "./Tag": {
+      "types": "./es/components/Tag/index.d.ts",
+      "import": "./es/components/Tag/index.js",
+      "require": "./lib/components/Tag/index.js"
+    },
+    "./Text": {
+      "types": "./es/components/Text/index.d.ts",
+      "import": "./es/components/Text/index.js",
+      "require": "./lib/components/Text/index.js"
+    },
+    "./TextArea": {
+      "types": "./es/components/TextArea/index.d.ts",
+      "import": "./es/components/TextArea/index.js",
+      "require": "./lib/components/TextArea/index.js"
+    },
+    "./TextInput": {
+      "types": "./es/components/TextInput/index.d.ts",
+      "import": "./es/components/TextInput/index.js",
+      "require": "./lib/components/TextInput/index.js"
+    },
+    "./Theme": {
+      "types": "./es/components/Theme/index.d.ts",
+      "import": "./es/components/Theme/index.js",
+      "require": "./lib/components/Theme/index.js"
+    },
+    "./Tile": {
+      "types": "./es/components/Tile/index.d.ts",
+      "import": "./es/components/Tile/index.js",
+      "require": "./lib/components/Tile/index.js"
+    },
+    "./TileGroup": {
+      "types": "./es/components/TileGroup/index.d.ts",
+      "import": "./es/components/TileGroup/index.js",
+      "require": "./lib/components/TileGroup/index.js"
+    },
+    "./TimePicker": {
+      "types": "./es/components/TimePicker/index.d.ts",
+      "import": "./es/components/TimePicker/index.js",
+      "require": "./lib/components/TimePicker/index.js"
+    },
+    "./TimePickerSelect": {
+      "types": "./es/components/TimePickerSelect/index.d.ts",
+      "import": "./es/components/TimePickerSelect/index.js",
+      "require": "./lib/components/TimePickerSelect/index.js"
+    },
+    "./Toggle": {
+      "types": "./es/components/Toggle/index.d.ts",
+      "import": "./es/components/Toggle/index.js",
+      "require": "./lib/components/Toggle/index.js"
+    },
+    "./ToggleSmall": {
+      "types": "./es/components/ToggleSmall/index.d.ts",
+      "import": "./es/components/ToggleSmall/index.js",
+      "require": "./lib/components/ToggleSmall/index.js"
+    },
+    "./Toggletip": {
+      "types": "./es/components/Toggletip/index.d.ts",
+      "import": "./es/components/Toggletip/index.js",
+      "require": "./lib/components/Toggletip/index.js"
+    },
+    "./Tooltip": {
+      "types": "./es/components/Tooltip/index.d.ts",
+      "import": "./es/components/Tooltip/index.js",
+      "require": "./lib/components/Tooltip/index.js"
+    },
+    "./TreeView": {
+      "types": "./es/components/TreeView/index.d.ts",
+      "import": "./es/components/TreeView/index.js",
+      "require": "./lib/components/TreeView/index.js"
+    },
+    "./UIShell": {
+      "types": "./es/components/UIShell/index.d.ts",
+      "import": "./es/components/UIShell/index.js",
+      "require": "./lib/components/UIShell/index.js"
+    },
+    "./UnorderedList": {
+      "types": "./es/components/UnorderedList/index.d.ts",
+      "import": "./es/components/UnorderedList/index.js",
+      "require": "./lib/components/UnorderedList/index.js"
+    },
+    "./index.scss": "./index.scss",
+    "./scss/*": "./scss/*",
+    "./scss/*.scss": "./scss/*.scss",
+    "./es/*": "./es/*",
+    "./es/*.js": "./es/*.js",
+    "./lib/*": "./lib/*",
+    "./lib/*.js": "./lib/*.js"
+  }
 }

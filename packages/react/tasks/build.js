@@ -22,8 +22,18 @@ const banner = `/**
 
 async function build() {
   const { build: tsdown } = await import('tsdown');
+  const { getComponentEntries } = await import(
+    '../scripts/get-component-entries.mjs'
+  );
 
   const reactEntrypoint = path.resolve(__dirname, '..', 'src', 'index.ts');
+  // Treat each public component directory's index file as a tsdown entry so
+  // its full named-export surface is preserved at `es/components/<Name>/`.
+  // Without this, rolldown's unbundled output keeps only whatever the root
+  // entry actually consumed (typically just `default`), which would break
+  // `import { Foo } from '@carbon/react/<Name>'` for downstream consumers
+  // using the subpath exports added in package.json.
+  const componentEntrypoints = getComponentEntries().map((c) => c.absPath);
   // These are not top-level package entrypoints, but they need to stay as
   // concrete files in the published module graph:
   //
@@ -90,7 +100,11 @@ async function build() {
       // using `tsc`-style APIs so every published JS file can keep a matching
       // type file.
       dts: false,
-      entry: [reactEntrypoint, ...reactCompatEntrypoints],
+      entry: [
+        reactEntrypoint,
+        ...reactCompatEntrypoints,
+        ...componentEntrypoints,
+      ],
       external,
       inlineOnly: false,
       failOnWarn: false,
