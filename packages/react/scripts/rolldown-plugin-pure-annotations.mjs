@@ -28,10 +28,12 @@ const DEFAULT_NAMES = ['forwardRef', 'memo', 'createContext', 'lazy'];
 function buildPattern(names) {
   const safe = names.map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   const union = safe.join('|');
-  // Match `forwardRef(` or `React.forwardRef(` not already preceded by a
-  // PURE annotation. Word boundary prevents matches like `myForwardRef(`.
+  // Match `forwardRef(`, `React.forwardRef(`, or with TypeScript generics
+  // like `forwardRef<Foo, Bar>(` and `React.createContext<Foo>(`. Already-
+  // annotated call sites are skipped via the leading-comment lookbehind.
+  // Word boundary prevents matches like `myForwardRef(`.
   return new RegExp(
-    `(?<!/\\*@__PURE__\\*/\\s)\\b((?:React\\s*\\.\\s*)?(?:${union})\\s*\\()`,
+    `(?<!/\\*@__PURE__\\*/\\s)\\b((?:React\\s*\\.\\s*)?(?:${union})(?:\\s*<[^()]*>)?\\s*\\()`,
     'g'
   );
 }

@@ -7,6 +7,11 @@
 
 import { merge } from '@carbon/feature-flags';
 
+// Intentional top-level side effect: registers Carbon's feature-flag defaults
+// at module load time so any component that reads them via `enabled()` sees
+// the same view. Listed in package.json#sideEffects (es/feature-flags.js,
+// lib/feature-flags.js) so bundlers preserve this call even when nothing
+// else from this module is imported.
 merge({
   'enable-css-custom-properties': true,
   'enable-css-grid': true,
