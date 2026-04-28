@@ -153,6 +153,16 @@ async function build() {
   );
   await patchCjsDefaultInterop(path.join(packageRoot, 'lib'));
 
+  // Drop a tiny package.json shim into each per-component subdirectory of
+  // both `es/` and `lib/`. The shim marks the subtree as side-effect-free
+  // and gives Node's resolver an explicit module type for the contained
+  // .js files. Bundlers honor the nested `sideEffects: false` even when the
+  // top-level package opts into a side-effects allowlist.
+  await writeComponentPackageShims({
+    components: getComponentEntries().map((c) => c.name),
+    packageRoot,
+  });
+
   // Build @carbon/react icons CJS + d.ts.
   await tsdown({
     banner,
@@ -210,6 +220,43 @@ async function build() {
   });
 
   await ensureIconsTypes(path.resolve(__dirname, '..', 'icons', 'index.d.ts'));
+}
+
+async function writeComponentPackageShims({ components, packageRoot }) {
+  // Tells bundlers the subtree is side-effect-free, gives Node a module type
+  // for its contents, and points stray directory imports at the local index.
+  const esShim = JSON.stringify(
+    {
+      sideEffects: false,
+      type: 'module',
+      main: 'index.js',
+      module: 'index.js',
+      types: 'index.d.ts',
+    },
+    null,
+    2
+  );
+  const cjsShim = JSON.stringify(
+    {
+      sideEffects: false,
+      type: 'commonjs',
+      main: 'index.js',
+      types: 'index.d.ts',
+    },
+    null,
+    2
+  );
+
+  for (const name of components) {
+    const esDir = path.join(packageRoot, 'es', 'components', name);
+    const cjsDir = path.join(packageRoot, 'lib', 'components', name);
+    if (await fs.pathExists(esDir)) {
+      await fs.writeFile(path.join(esDir, 'package.json'), esShim + '\n');
+    }
+    if (await fs.pathExists(cjsDir)) {
+      await fs.writeFile(path.join(cjsDir, 'package.json'), cjsShim + '\n');
+    }
+  }
 }
 
 async function copyDeclarations(fromDir, toDir) {
