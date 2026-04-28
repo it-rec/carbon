@@ -10,6 +10,6 @@ import DismissibleTag from './DismissibleTag';
 import OperationalTag from './OperationalTag';
 import SelectableTag from './SelectableTag';
 
-export * from './Tag.Skeleton';
+export { TagSkeleton, type TagSkeletonProps } from './Tag.Skeleton';
 export default Tag;
 export { Tag, DismissibleTag, OperationalTag, SelectableTag };

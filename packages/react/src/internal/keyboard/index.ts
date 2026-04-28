@@ -6,5 +6,9 @@
  */
 
 export * as keys from './keys';
-export * from './match';
-export * from './navigation';
+export { match, matches } from './match';
+export {
+  getNextIndex,
+  selectorFocusable,
+  selectorTabbable,
+} from './navigation';

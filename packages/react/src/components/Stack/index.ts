@@ -5,6 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './HStack';
-export * from './Stack';
-export * from './VStack';
+export { HStack } from './HStack';
+export { Stack, type StackProps } from './Stack';
+export { VStack } from './VStack';

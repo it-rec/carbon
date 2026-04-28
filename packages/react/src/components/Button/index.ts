@@ -9,5 +9,16 @@ import Button from './Button';
 import { type ButtonProps } from './Button';
 export default Button;
 export { Button, type ButtonProps };
-export * from './Button';
+export {
+  ButtonKinds,
+  ButtonSizes,
+  ButtonTooltipAlignments,
+  ButtonTooltipPositions,
+  type ButtonBaseProps,
+  type ButtonComponent,
+  type ButtonKind,
+  type ButtonSize,
+  type ButtonTooltipAlignment,
+  type ButtonTooltipPosition,
+} from './Button';
 export { default as ButtonSkeleton } from './Button.Skeleton';

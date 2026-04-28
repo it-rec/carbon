@@ -5,6 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './Text';
-export * from './TextDirection';
-export * from './TextDirectionContext';
+export { Text, type TextBaseProps, type TextProps } from './Text';
+export { TextDirection, type TextDirectionProps } from './TextDirection';
+export {
+  TextDirectionContext,
+  type GetTextDirection,
+  type TextDir,
+  type TextDirectionContextType,
+} from './TextDirectionContext';

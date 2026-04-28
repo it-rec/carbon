@@ -5,4 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './ToggleSmall.Skeleton';
+export {
+  ToggleSmallSkeleton,
+  type ToggleSmallSkeletonProps,
+} from './ToggleSmall.Skeleton';

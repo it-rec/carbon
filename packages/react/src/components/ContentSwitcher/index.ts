@@ -8,4 +8,4 @@
 import { ContentSwitcher } from './ContentSwitcher';
 
 export default ContentSwitcher;
-export * from './ContentSwitcher';
+export { ContentSwitcher, type ContentSwitcherProps } from './ContentSwitcher';

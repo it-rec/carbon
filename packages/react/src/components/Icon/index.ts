@@ -5,4 +5,4 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './Icon.Skeleton';
+export { IconSkeleton, type IconSkeletonProps } from './Icon.Skeleton';

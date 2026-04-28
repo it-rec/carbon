@@ -33,10 +33,17 @@ function findIndex(dir) {
 
 function isReachableFromBarrel(name, barrel) {
   const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const re = new RegExp(
+  // Either the barrel imports/re-exports from this directory directly...
+  const fromPath = new RegExp(
     `from\\s+['"]\\./components/${escaped}(?:/[\\w./-]+)?['"]`
   );
-  return re.test(barrel);
+  if (fromPath.test(barrel)) return true;
+  // ...or the directory's own name appears as a public symbol in the barrel.
+  // This keeps back-compat re-export shims like AccordionItem and
+  // BreadcrumbItem reachable as subpaths even after the export-* codemod
+  // collapses their now-redundant wildcard re-export lines.
+  const nameToken = new RegExp(`\\b${escaped}\\b`);
+  return nameToken.test(barrel);
 }
 
 export function getComponentEntries() {

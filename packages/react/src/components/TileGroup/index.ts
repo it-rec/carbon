@@ -8,4 +8,4 @@
 import { TileGroup } from './TileGroup';
 
 export default TileGroup;
-export * from './TileGroup';
+export { TileGroup, type TileGroupProps } from './TileGroup';

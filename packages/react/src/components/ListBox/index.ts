@@ -5,7 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './ListBoxPropTypes';
+export {
+  ListBoxSizePropType,
+  ListBoxTypePropType,
+  type ListBoxSize,
+  type ListBoxType,
+} from './ListBoxPropTypes';
 
 import type { ComponentProps } from 'react';
 import ListBoxInternal from './ListBox';

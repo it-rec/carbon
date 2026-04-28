@@ -5,5 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './FilterableMultiSelect';
-export * from './MultiSelect';
+export {
+  FilterableMultiSelect,
+  type FilterableMultiSelectProps,
+} from './FilterableMultiSelect';
+export { MultiSelect, type MultiSelectProps } from './MultiSelect';

@@ -6,7 +6,19 @@
  */
 
 import { type StructuredListWrapperProps } from './StructuredList';
-export * from './StructuredList';
+export {
+  StructuredListBody,
+  StructuredListCell,
+  StructuredListHead,
+  StructuredListInput,
+  StructuredListRow,
+  StructuredListWrapper,
+  type StructuredListBodyProps,
+  type StructuredListCellProps,
+  type StructuredListHeadProps,
+  type StructuredListInputProps,
+  type StructuredListRowProps,
+} from './StructuredList';
 export {
   default as StructuredListSkeleton,
   type StructuredListSkeletonProps,

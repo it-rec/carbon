@@ -7,7 +7,7 @@
 
 import Search from './Search';
 
-export * from './Search';
+export { type SearchProps } from './Search';
 export default Search;
 export { Search };
 

@@ -10,5 +10,5 @@ import {
 } from './ProgressIndicator';
 
 export { default as ProgressIndicatorSkeleton } from './ProgressIndicator.Skeleton';
-export * from './ProgressIndicator';
+export { ProgressIndicator, ProgressStep } from './ProgressIndicator';
 export { type ProgressIndicatorProps, type ProgressStepProps };

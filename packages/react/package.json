@@ -173,6 +173,11 @@
       "import": "./es/components/Breadcrumb/index.js",
       "require": "./lib/components/Breadcrumb/index.js"
     },
+    "./BreadcrumbItem": {
+      "types": "./es/components/BreadcrumbItem/index.d.ts",
+      "import": "./es/components/BreadcrumbItem/index.js",
+      "require": "./lib/components/BreadcrumbItem/index.js"
+    },
     "./Button": {
       "types": "./es/components/Button/index.d.ts",
       "import": "./es/components/Button/index.js",

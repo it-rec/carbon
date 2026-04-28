@@ -5,5 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export * from './defaultItemToString';
-export * from './utils';
+export { defaultItemToString } from './defaultItemToString';
+export { isComponentElement } from './utils';
