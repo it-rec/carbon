@@ -8,7 +8,8 @@ contribution of `@carbon/react` and its non-peer dependencies only.
 
 Run before each phase commit and append a row.
 
-| Phase | Named import bytes | Subpath import bytes | Notes                                                                                                                                                               |
-| ----- | -----------------: | -------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0     |             52,329 |                  n/a | Baseline. Subpath unsupported yet.                                                                                                                                  |
-| 1     |             52,329 |               52,070 | Subpath exports added. Each component dir is now a tsdown entry, preserving its named-export surface. Most of the gap to the named import will close in Phases 2–5. |
+| Phase | Named import bytes | Subpath import bytes | Notes                                                                                                                                                                                                                                                         |
+| ----- | -----------------: | -------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0     |             52,329 |                  n/a | Baseline. Subpath unsupported yet.                                                                                                                                                                                                                            |
+| 1     |             52,329 |               52,070 | Subpath exports added. Each component dir is now a tsdown entry, preserving its named-export surface. Most of the gap to the named import will close in Phases 2–5.                                                                                           |
+| 2     |             52,329 |               52,070 | PURE annotations applied via Rolldown plugin (1,326 sites across `es/`). No measurable change for the Button-only consumer because Button is the import target — annotations only trigger DCE when a wrapped component is unreferenced. Sets up later phases. |

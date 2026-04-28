@@ -25,6 +25,9 @@ async function build() {
   const { getComponentEntries } = await import(
     '../scripts/get-component-entries.mjs'
   );
+  const { pureAnnotations } = await import(
+    '../scripts/rolldown-plugin-pure-annotations.mjs'
+  );
 
   const reactEntrypoint = path.resolve(__dirname, '..', 'src', 'index.ts');
   // Treat each public component directory's index file as a tsdown entry so
@@ -114,6 +117,7 @@ async function build() {
         '.js': 'jsx',
       },
       outDir: path.join(packageRoot, format.directory),
+      plugins: [pureAnnotations()],
       // `unbundle` is the tsdown-supported equivalent of the old Rollup
       // `preserveModules` output. It keeps the source module graph so subpath
       // imports like `@carbon/react/es/internal/useEvent` keep working.
